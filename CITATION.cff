@@ -1,0 +1,66 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite the paper below."
+title: "chorbwo: MDP-BWO for QoS-aware service choreography in the Internet of Things"
+abstract: >-
+  Replication package for MDP-BWO: a learned three-state Markov model of each candidate service
+  drives both a forecast-guided Black Widow Optimization search over choreography bindings and a
+  per-participant finite-horizon MDP rebinding policy executed at run time as a table lookup.
+  Includes the simulator, the instance generator, the baselines, the frozen protocol, the raw run
+  records and the scripts that regenerate every table and figure of the paper.
+type: software
+license: MIT
+repository-code: "https://github.com/Salarsefat/chorbwo"
+keywords:
+  - Internet of Things
+  - service choreography
+  - quality of service
+  - Markov decision process
+  - Black Widow Optimization
+  - runtime adaptation
+authors:
+  - family-names: Sefati
+    given-names: Seyed Salar
+  - family-names: Sefati
+    given-names: Seyedeh Tina
+  - family-names: Vlahov
+    given-names: Atanas
+  - family-names: Craciunescu
+    given-names: Razvan
+  - family-names: Arasteh
+    given-names: Bahman
+  - family-names: Poulkov
+    given-names: Vladimir
+preferred-citation:
+  type: unpublished
+  title: "Service Choreography in the Internet of Things Based on Forecast-Guided Binding and Local Rebinding"
+  authors:
+    - family-names: Sefati
+      given-names: Seyed Salar
+    - family-names: Vlahov
+      given-names: Atanas
+    - family-names: Craciunescu
+      given-names: Razvan
+    - family-names: Arasteh
+      given-names: Bahman
+    - family-names: Poulkov
+      given-names: Vladimir
+  year: 2026
+  notes: "Manuscript under review."
+references:
+  - type: article
+    title: "Investigating QoS of Real-World Web Services"
+    authors:
+      - family-names: Zheng
+        given-names: Zibin
+      - family-names: Zhang
+        given-names: Yilei
+      - family-names: Lyu
+        given-names: Michael R.
+    journal: "IEEE Transactions on Services Computing"
+    volume: 7
+    issue: 1
+    start: 32
+    end: 39
+    year: 2014
+    doi: "10.1109/TSC.2012.34"
+    notes: "Source of the WS-DREAM dataset #1 files in data/."

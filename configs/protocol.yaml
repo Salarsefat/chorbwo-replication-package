@@ -1,0 +1,20 @@
+# Experimental protocol. Seeds define instances (candidate pools, DAG, dynamics, observed
+# initial states) and optimizer randomness; execution uses common random numbers per seed.
+budget: 3000          # fitness evaluations per optimizer run (all population methods)
+E: 30                 # executed sessions per binding
+H: 20                 # decision slots per session
+K: 2                  # alternatives per shortlist (a method spec may override it with K)
+milp_time_limit: 10   # seconds, per MILP run (HiGHS); this is the value used for the paper
+phases:
+  dev:                # design iteration only; never reported as final results
+    seeds: [0, 5]
+    configs: [[synthetic, 10, 20], [wsdream, 10, 20]]
+  val:                # hyperparameter tuning for ALL methods (comparable effort)
+    seeds: [100, 105]
+    configs: [[synthetic, 10, 20], [wsdream, 10, 20]]
+  test:               # held-out; frozen design
+    seeds: [1000, 1030]
+    configs: [[synthetic, 10, 10], [synthetic, 10, 20], [synthetic, 10, 30], [synthetic, 10, 50],
+              [synthetic, 5, 20], [synthetic, 15, 20], [synthetic, 20, 20],
+              [wsdream, 10, 10], [wsdream, 10, 20], [wsdream, 10, 30], [wsdream, 10, 50],
+              [wsdream, 5, 20], [wsdream, 15, 20], [wsdream, 20, 20]]

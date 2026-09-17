@@ -1,0 +1,9 @@
+# Exact versions with which every table and figure was verified to regenerate identically
+# from the shipped records (Python 3.12). The PDFs in paper/figures record Matplotlib 3.10.8;
+# the other package versions used for the original runs were not recorded.
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+matplotlib==3.10.8
+PyYAML==6.0.3
+openpyxl==3.1.5

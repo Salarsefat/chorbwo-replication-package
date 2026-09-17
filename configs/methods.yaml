@@ -1,0 +1,43 @@
+# Method specifications. model: planning-time QoS estimator (static | last | markov | tuned);
+# policy: runtime rebinding policy (none | reactive | mdp).  "tuned" means the estimator chosen
+# on the validation set for that baseline (static or last-observed), see tuned_params_frozen.json.
+main:
+  - {name: MDP-BWO,  opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp}
+  - {name: BWO,     opt: BWO,    model: tuned,  policy: reactive}
+  - {name: GA,      opt: GA,     model: tuned,  policy: reactive}
+  - {name: PSO,     opt: PSO,    model: tuned,  policy: reactive}
+  - {name: GWO,     opt: GWO,    model: tuned,  policy: reactive}
+  - {name: ACO,     opt: ACO,    model: tuned,  policy: reactive}
+  - {name: MILP,    opt: MILP,   model: tuned,  policy: reactive}
+# optimizer-only comparison: every optimizer receives the Markov forecast and the same runtime
+optonly:
+  - {name: BWO+MF,  opt: BWO,    model: markov, gamma: 0.5, policy: reactive}
+  - {name: GA+MF,   opt: GA,     model: markov, gamma: 0.5, policy: reactive}
+  - {name: PSO+MF,  opt: PSO,    model: markov, gamma: 0.5, policy: reactive}
+  - {name: GWO+MF,  opt: GWO,    model: markov, gamma: 0.5, policy: reactive}
+  - {name: ACO+MF,  opt: ACO,    model: markov, gamma: 0.5, policy: reactive}
+  - {name: MDP-BWO+R0, opt: MDP-BWO, model: markov, policy: reactive}
+ablation:
+  - {name: A0 full,             opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp}
+  - {name: A1 static model,     opt: MDP-BWO, model: static, policy: mdp, shortlist: mdp}
+  - {name: A2 last-obs model,   opt: MDP-BWO, model: last,   policy: mdp, shortlist: mdp}
+  - {name: A3 undiscounted (g=1), opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp, gamma: 1.0}
+  - {name: A4 no M1,            opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp, params: {M1: false}}
+  - {name: A5 no M2,            opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp, params: {M2: false}}
+  - {name: A6 no M3,            opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp, params: {M3: false}}
+  - {name: A7 std BWO skeleton, opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp, params: {M1: false, M2: false, M3: false}}
+  - {name: A8 lookahead shortlist, opt: MDP-BWO, model: markov, policy: mdp, shortlist: lookahead}
+  - {name: A9 myopic MDP,       opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp, horizon: myopic}
+  - {name: A10 reactive runtime, opt: MDP-BWO, model: markov, policy: reactive}
+  - {name: A11 no rebinding,    opt: MDP-BWO, model: markov, policy: none}
+  - {name: A12 greedy+MDP,      opt: Greedy, model: markov, gamma: 0.5, policy: mdp, shortlist: mdp, use_tuned: false}
+  - {name: A13 GWO+MDP,         opt: GWO,    model: markov, gamma: 0.5, policy: mdp, shortlist: mdp}
+# switching-cost sensitivity (no MILP: 10 s/run would dominate the budget of this side study)
+sens:
+  - {name: MDP-BWO,    opt: MDP-BWO, model: markov, policy: mdp, shortlist: mdp}
+  - {name: MDP-BWO+R0, opt: MDP-BWO, model: markov, policy: reactive}
+  - {name: BWO,       opt: BWO,    model: tuned,  policy: reactive}
+  - {name: GA,        opt: GA,     model: tuned,  policy: reactive}
+  - {name: PSO,       opt: PSO,    model: tuned,  policy: reactive}
+  - {name: GWO,       opt: GWO,    model: tuned,  policy: reactive}
+  - {name: ACO,       opt: ACO,    model: tuned,  policy: reactive}

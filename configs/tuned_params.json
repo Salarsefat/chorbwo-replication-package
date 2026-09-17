@@ -1,0 +1,85 @@
+{
+  "MDP-BWO": {
+    "params": {
+      "N": 40,
+      "pp": 0.4,
+      "cr0": 0.2,
+      "cr1": 0.9,
+      "pm": 0.4,
+      "cpp": 4,
+      "init_frac": 0.5,
+      "beta": 16,
+      "guided_mut": 0.5
+    },
+    "model": "markov",
+    "gamma": 0.5,
+    "score_U": 0.9095390706032951,
+    "n_trials": 12
+  },
+  "BWO": {
+    "params": {
+      "N": 60,
+      "pp": 0.6,
+      "cr": 0.6,
+      "pm": 0.6,
+      "cpp": 4
+    },
+    "model": "last",
+    "gamma": 1.0,
+    "score_U": 0.8226699065557972,
+    "n_trials": 12
+  },
+  "GA": {
+    "params": {
+      "N": 30,
+      "pc": 0.7,
+      "pm_mult": 2.0,
+      "k_tour": 3
+    },
+    "model": "last",
+    "gamma": 1.0,
+    "score_U": 0.8296993697459669,
+    "n_trials": 12
+  },
+  "PSO": {
+    "params": {
+      "N": 40,
+      "w": 0.5,
+      "c1": 2.0,
+      "c2": 1.5,
+      "vmax_frac": 0.5
+    },
+    "model": "static",
+    "gamma": 1.0,
+    "score_U": 0.7922275986966774,
+    "n_trials": 12
+  },
+  "GWO": {
+    "params": {
+      "N": 30
+    },
+    "model": "static",
+    "gamma": 1.0,
+    "score_U": 0.7768499447084805,
+    "n_trials": 6
+  },
+  "ACO": {
+    "params": {
+      "N": 40,
+      "alpha": 2.0,
+      "beta": 2.0,
+      "rho": 0.2
+    },
+    "model": "last",
+    "gamma": 1.0,
+    "score_U": 0.8324622656496233,
+    "n_trials": 12
+  },
+  "MILP": {
+    "params": {},
+    "model": "last",
+    "gamma": 1.0,
+    "score_U": 0.8332465762222838,
+    "n_trials": 2
+  }
+}
